@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+    xmlns:th="http://www.thymeleaf.org" 
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+    
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<title>Sistema Gerenciador de Cadastro</title>
+	<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous"> 
+</head>
+<body>
+	
+	<div class="container my-2">
+	
+	<h1>Lista de Cadastro</h1>
+		<a th:href="@{/addStakeholderForm}" class="btn btn-primary btn-sm mb-3"> CADASTRAR </a>
+			<table border="1" class = "table table-striped table-responsive-md">
+				<thead>
+					<tr>
+						<th>Código</th>
+						<th>Atividade</th>
+						<th>Modalidade</th>
+						<th>Início</th>
+						<th>Final</th>
+						<th>Dependencia</th>
+						<th>Ações</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="stakeholder: ${listStakeholder}">
+					<td th:text="${stakeholder.id}"></td>
+					<td th:text="${stakeholder.atividade}"></td>
+					<td th:text="${stakeholder.responsavel}"></td>
+					<td th:text="${stakeholder.dataInicio}"></td>
+					<td th:text="${stakeholder.dataFinal}"></td>
+					<td><a th:href="@{/showFormForUpdate/{id}(id=${stakeholder.id})}" class="btn btn-primary">Atualizar</a>
+					<a th:href="@{/deleteStakeholder/{id}(id=${stakeholder.id})}" class="btn btn-danger">Deletar</a></td>
+					</tr>
+				</tbody>
+			</table>
+	</div>
+</body>
+</html>
